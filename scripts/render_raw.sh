@@ -13,16 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export CUDA_VISIBLE_DEVICES=0
+#export CUDA_VISIBLE_DEVICES=0
 
-SCENE=nightpiano
-EXPERIMENT=raw
-DATA_DIR=/usr/local/google/home/barron/tmp/nerf_data/rawnerf/scenes
-CHECKPOINT_DIR=/usr/local/google/home/barron/tmp/nerf_results/"$EXPERIMENT"/"$SCENE"
+SCENE=gardenlights
+DATA_DIR=/opt/rawnerf/scenes/"$SCENE"
+CHECKPOINT_DIR=/opt/rawnerf/results/"$SCENE"
 
 python -m render \
   --gin_configs=configs/llff_raw.gin \
-  --gin_bindings="Config.data_dir = '${DATA_DIR}/${SCENE}'" \
+  --gin_bindings="Config.data_dir = '${DATA_DIR}'" \
   --gin_bindings="Config.checkpoint_dir = '${CHECKPOINT_DIR}'" \
   --gin_bindings="Config.render_path = True" \
   --gin_bindings="Config.render_path_frames = 10" \
