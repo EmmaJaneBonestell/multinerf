@@ -16,12 +16,12 @@
 #export CUDA_VISIBLE_DEVICES=0
 
 SCENE=gardenlights
-DATA_DIR=/opt/rawnerf/scenes/"$DATA_DIR"
+DATA_DIR=/opt/rawnerf/scenes/"$SCENE"
 CHECKPOINT_DIR=/opt/rawnerf/results/"$SCENE"
 
 rm "$CHECKPOINT_DIR"/*
 python -m train \
   --gin_configs=configs/llff_raw.gin \
-  --gin_bindings="Config.data_dir = '${DATA_DIR}/${SCENE}'" \
+  --gin_bindings="Config.data_dir = '${DATA_DIR}'" \
   --gin_bindings="Config.checkpoint_dir = '${CHECKPOINT_DIR}'" \
   --logtostderr
